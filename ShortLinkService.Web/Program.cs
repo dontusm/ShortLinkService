@@ -1,44 +1,49 @@
+using Microsoft.EntityFrameworkCore;
+using ShortLinkService.Application.Commands.CreateShortUrl;
+using ShortLinkService.Application.Common;
+using ShortLinkService.Application.Common.Mappings;
+using ShortLinkService.Infrastructure.Data;
+using ShortLinkService.Infrastructure.Repositories;
+using ShortLinkService.Infrastructure.Services;
+using ShortLinkService.Web.Middlewares;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddScoped<IUrlRepository, UrlRepository>();
+builder.Services.AddSingleton<IShortenerService, ShortenerService>();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateShortUrlCommandHandler).Assembly));
+
+builder.Services.AddAutoMapper(cfg => 
+{
+    cfg.AddMaps(typeof(MappingProfile).Assembly);
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseMiddleware<ExceptionMiddleware>();
+
+// 2. Авто-миграция
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+    db.Database.Migrate(); 
 }
 
-app.UseHttpsRedirection();
+app.UseDefaultFiles(); 
+app.UseStaticFiles(); 
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseRouting();
 
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+app.MapControllers(); 
+
+app.MapFallbackToFile("index.html"); 
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

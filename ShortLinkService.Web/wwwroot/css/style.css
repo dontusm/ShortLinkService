@@ -1,0 +1,43 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.text-truncate-custom {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.75rem;
+}
+
+h1 {
+    font-weight: 700;
+    color: #212529;
+}
+
+.btn-group .btn {
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+/* Эффект при наведении на строку таблицы */
+tbody tr:hover {
+    background-color: rgba(0,0,0,0.02);
+    transition: 0.2s;
+}
+
+/* Красивое отображение бейджика кликов */
+.badge {
+    font-size: 0.9em;
+    font-weight: 500;
+}

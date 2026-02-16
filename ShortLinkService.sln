@@ -1,6 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLinkService", "ShortLinkService\ShortLinkService.csproj", "{0FDDD25D-BC0D-4FE4-B202-1B2A751B3A87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLinkService.Web", "ShortLinkService.Web\ShortLinkService.Web.csproj", "{0FDDD25D-BC0D-4FE4-B202-1B2A751B3A87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLinkService.Application", "ShortLinkService.Application\ShortLinkService.Application.csproj", "{95970AC2-7972-455F-9D3B-6574115C565A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLinkService.Core", "ShortLinkService.Core\ShortLinkService.Core.csproj", "{CB6F71D6-8ED4-4AAB-B25E-9BA510921DC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLinkService.Infrastructure", "ShortLinkService.Infrastructure\ShortLinkService.Infrastructure.csproj", "{E6B05FCF-0E92-4E0B-A749-2F121F86105D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3039EAB1-00FF-4791-8656-3D0AEDE666E0}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLinkService.Tests", "ShortLinkService.Tests\ShortLinkService.Tests.csproj", "{B162FECF-F736-4322-B2A5-3A92AD5C2104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +25,21 @@ Global
 		{0FDDD25D-BC0D-4FE4-B202-1B2A751B3A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FDDD25D-BC0D-4FE4-B202-1B2A751B3A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FDDD25D-BC0D-4FE4-B202-1B2A751B3A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95970AC2-7972-455F-9D3B-6574115C565A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95970AC2-7972-455F-9D3B-6574115C565A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95970AC2-7972-455F-9D3B-6574115C565A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95970AC2-7972-455F-9D3B-6574115C565A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB6F71D6-8ED4-4AAB-B25E-9BA510921DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB6F71D6-8ED4-4AAB-B25E-9BA510921DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB6F71D6-8ED4-4AAB-B25E-9BA510921DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB6F71D6-8ED4-4AAB-B25E-9BA510921DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6B05FCF-0E92-4E0B-A749-2F121F86105D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6B05FCF-0E92-4E0B-A749-2F121F86105D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6B05FCF-0E92-4E0B-A749-2F121F86105D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6B05FCF-0E92-4E0B-A749-2F121F86105D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B162FECF-F736-4322-B2A5-3A92AD5C2104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B162FECF-F736-4322-B2A5-3A92AD5C2104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B162FECF-F736-4322-B2A5-3A92AD5C2104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B162FECF-F736-4322-B2A5-3A92AD5C2104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
